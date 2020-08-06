@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h5 class="modal-title">User Details</h5>
+  <button type="button" class="close" data-dismiss="modal" (click)="closeModal('dismiss')">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Review the details before saving.</p>
+  <ul>
+    <li><b>Name: </b>{{fromParent.name}}</li>
+    <li><b>Email: </b>{{fromParent.email}}</li>
+    <li><b>Phone No.: </b>{{fromParent.phone}}</li>
+    <li><b>Gender: </b>{{fromParent.gender}}</li>
+    <li><b>Category: </b>{{fromParent.category}}</li>
+    <li><b>Technology: </b>{{fromParent.tech}}</li>
+    <li><b>Profile Photo(if any): </b>{{fromParent.filename}}</li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal('close')">Close</button>
+  <button type="button" class="btn btn-primary" (click)="closeModal('Data Saved!')">Save changes</button>
+</div>

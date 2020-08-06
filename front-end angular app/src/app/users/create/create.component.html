@@ -1,0 +1,70 @@
+<div class="container-fluid" style="background-color:lavender;">
+  <h2 class="text-center pt-2">FORM</h2>
+
+  <!-- {{userForm.value|json}} -->
+  <form [formGroup]='userForm'>
+
+    <div class="form-group">
+      <label><b>Name</b></label>
+      <input [class.is-invalid]='name.invalid && name.touched' formControlName='name' type="text" class="form-control">
+      <small [class.d-none]='name.valid || name.untouched' class="text-danger">Name should be of length 2 - 30
+        characters containing ONLY alpabets and spaces.</small>
+    </div>
+
+    <div class="form-group">
+      <label><b>Email</b></label>
+      <input [class.is-invalid]='email.invalid && email.touched' formControlName='email' type="email"
+        class="form-control">
+      <small [class.d-none]='email.valid || email.untouched' class="text-danger">Please enter a valid email.</small>
+    </div>
+
+    <div class="form-group">
+      <label><b>Phone No.</b></label>
+      <input [class.is-invalid]='phone.invalid && phone.touched' formControlName='phone' type="tel"
+        class="form-control">
+      <small [class.d-none]='phone.valid || phone.untouched' class="text-danger">Only 10 digit Phone number
+        allowed.</small>
+    </div>
+
+    <label><b>Gender</b></label>
+    <div class="ml-2 form-check-inline">
+      <input formControlName='gender' class="form-check-input" id='male' type="radio" name="gender" value="male">
+      <label class="form-check-label" for="male">Male</label>
+    </div>
+    <div class="form-check-inline">
+      <input formControlName='gender' class="form-check-input" id='female' type="radio" name="gender" value="female">
+      <label class="form-check-label" for='female'>Female</label>
+    </div>
+    <br>
+    <label class="mt-2"><b>Category</b></label>
+    <select [class.is-invalid]='category.invalid && category.touched' formControlName='category' class='custom-select'>
+      <option value="" selected>Choose any one</option>
+      <option value="General">General</option>
+      <option value="SC/ST">SC/ST</option>
+      <option value="OBC">OBC</option>
+    </select>
+    <small [class.d-none]='category.valid || category.untouched' class="text-danger">Please choose any one
+      option.</small>
+
+    <div class="my-3">
+      <label><b>Technology</b></label>
+      <div *ngFor="let item of techList" class="col-md-2">
+        <label>
+          <input type="checkbox" [value]="item" (change)="onCheckChange($event)">
+          {{item}}
+        </label>
+      </div>
+      <small [class.d-none]='!isTechListEmpty'>Please select atleast one option.</small>
+    </div>
+
+    <label><b>Profile Photo(Optional)</b></label><br>
+    <img [src]="url" height='75' alt="Photo preview..."><br>
+    <input formControlName='filename' type="file" accept=".png, .jpg, .jpeg" (change)='onselectFile($event)'>
+
+    <div class="d-flex justify-content-end p-3">
+      <button type="button" [disabled]="userForm.invalid || isTechListEmpty" (click)="openModal()"
+        class="btn btn-primary">Preview</button>
+    </div>
+  </form>
+
+</div>
