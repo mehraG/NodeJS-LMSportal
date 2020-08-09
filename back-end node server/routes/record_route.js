@@ -30,4 +30,16 @@ router
         } catch (err) { res.send('Error!! ', err); }
     });
 
+router.delete('/:id', async (req, res) => {
+    console.log('delete kar', req.params.id)
+    try {
+        const user = await User.findById(req.params.id)
+        const deleted = await user.remove()
+        res.json(deleted)
+    } catch (err) {
+        console.log('error hai! del mei', err)
+        res.send('Error bro')
+    }
+});
+
 module.exports = router;

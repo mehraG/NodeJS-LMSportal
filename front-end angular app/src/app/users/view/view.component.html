@@ -15,6 +15,7 @@
           <th>Category</th>
           <th>Technology</th>
           <th>Photo</th>
+          <th>Delete entry</th>
         </tr>
       </thead>
 
@@ -28,6 +29,7 @@
           <td>{{user.category}}</td>
           <td>{{user.tech}}</td>
           <td><img [src]="user.photo64" height='50' alt="NA"></td>
+          <td> <button  (click)="delRow(user._id)" class="btn btn-danger">X</button> </td>
         </tr>
       </tbody>
 
